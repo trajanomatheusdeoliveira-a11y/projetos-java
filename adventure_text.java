@@ -48,11 +48,44 @@ class Main {
            teclado.nextLine();
           
            // laço pincipal
-           salas(args);
+           jogo_historia(args);
 
 
          
        }
+       private static void jogo_historia(String[] args) {
+		
+            int historia1 = gerador.nextInt(4)+1;
+            int historia2 = gerador.nextInt(4)+1;
+            String hist = ("");
+            String hist2 = ("");
+            switch(historia1) {
+                case 1:
+                    hist = ("eliminar os monstros de"); break;
+                case 2:
+                    hist = ("explorar"); break;
+                case 3:
+                    hist = ("explorar"); break;
+                case 4:
+                    hist = ("roubar"); break;
+            }
+            switch(historia2) {
+                case 1:
+                    hist2 = ("uma ruina antiga"); break;
+                case 2:
+                    hist2 = ("um forte abandonado"); break;
+                case 3:
+                    hist2 = ("um forte abandonado"); break;
+                case 4:
+                    hist2 = ("uma caverna misteriosa"); break;	
+            }
+            System.out.println("você ouve falar de uma missão para: "+hist+" "+hist2); 
+            teclado.nextLine();
+            System.out.println(" você chega ao local  e entra pela porta escura e mal iluminada");
+            teclado.nextLine();
+            //chama o jogo:
+            salas(args);
+        }
        //combate e monstros
        private static void combate(String[] args){
            int tipoInimigo = gerador.nextInt(4);
@@ -139,6 +172,7 @@ class Main {
                    System.out.println("Você sofre " + dano_inimigo + " de dano! (Vida atual: " + vida_player + ")");
                    if (vida_player <= 0) {
                        System.out.println("\n Você foi derrotado pelo " + nomeInimigo + "...");
+                       teclado.nextLine();
                        break;
                    }
 
@@ -159,6 +193,7 @@ class Main {
            // Resultado final
            if (vida_player > 0 && vida_inimigo <= 0) {
                System.out.println("\n Você venceu o combate contra o " + nomeInimigo + "!");
+               teclado.nextLine();
            } if (vida_player <= 0) {
                morrer();
                return; // para encerrar o combate
@@ -377,7 +412,7 @@ class Main {
        }
 
 
-       System.out.println(item);
+       //System.out.println(item);
        return item;
    }
    private static void morrer() {
